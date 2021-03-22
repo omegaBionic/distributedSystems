@@ -3,17 +3,17 @@ import visidia.simulation.process.edgestate.MarkedState;
 import visidia.simulation.process.algorithm.LC1_Algorithm;
 
 public class OpenStarsWithLeaderElection extends LC1_Algorithm {
-	
+
 	@Override
 	public String getDescription() {
-	return "Leader Election 1546";
+		return "Leader Election 1605";
 	}
-	
+
 	@Override
 	protected void beforeStart() {
 		setLocalProperty("label", vertex.getLabel());
 		setLocalProperty("counter", vertex.getDegree());
-		
+
 		//putProperty("Affichage: ", getLocalProperty("counter"), SimulationConstants.PropertyStatus.DISPLAYED);
 	}
 
@@ -21,32 +21,30 @@ public class OpenStarsWithLeaderElection extends LC1_Algorithm {
 	protected void onStarCenter() {
 
 		// Le centre à l'état N et il possède un seul voisin N => état F
-		for(int i=0; i < getActiveDoors().size(); i++) {
-			if (getLocalProperty("label").equals("N") && getActiveNDoors() == 1) {
-				setLocalProperty("label", "F");
-				//setDoorState(new MarkedState(true), i);
-				//break;
-			}
-			else if(getLocalProperty("label").equals("N") && getActiveNDoors() == 0) {
-				setLocalProperty("label", "E");
-			}
+		if (getLocalProperty("label").equals("N") && getActiveNDoors() == 1) {
+			setLocalProperty("label", "F");
+			//setDoorState(new MarkedState(true), i);
+			//break;
 		}
-		
+		else if(getLocalProperty("label").equals("N") && getActiveNDoors() == 0) {
+			setLocalProperty("label", "E");
+		}
+
 		//putProperty("Affichage: ", getLocalProperty("counter"), SimulationConstants.PropertyStatus.DISPLAYED);
 	}
-	
+
 	@Override
 	public Object clone() {
 		return new OpenStarsWithLeaderElection();
 	}
-	
+
 	int getActiveNDoors() {
 		int count = 0;
 		for(int i=0; i < getActiveDoors().size(); i++) 
 			if(getNeighborProperty(i, "label").equals("N"))
 				count++;
-		
+
 		return count;
 	}
-	
+
 }
