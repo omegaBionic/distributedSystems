@@ -4,7 +4,7 @@ import visidia.simulation.SimulationConstants;
 import visidia.simulation.process.algorithm.LC0_Algorithm;
 import visidia.simulation.process.edgestate.MarkedState;
 
-public class SpanningTree extends LC0_Algorithm{
+public class BasicAlgorithm extends LC0_Algorithm{
 	
 	private String etatsVoisins[];
 	private int fatherDoor;
@@ -69,7 +69,7 @@ public class SpanningTree extends LC0_Algorithm{
 
     @Override
     public Object clone(){
-        return new SpanningTree();
+        return new BasicAlgorithm();
     }
     
     
