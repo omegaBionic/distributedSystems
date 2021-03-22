@@ -2,7 +2,7 @@ import visidia.simulation.SimulationConstants;
 import visidia.simulation.process.edgestate.MarkedState;
 import visidia.simulation.process.algorithm.LC1_Algorithm;
 
-public class SpanningTree extends LC1_Algorithm {
+public class OpenStarsAlone extends LC1_Algorithm {
 	
 	@Override
 	public String getDescription() {
@@ -34,7 +34,7 @@ public class SpanningTree extends LC1_Algorithm {
 	
 	@Override
 	public Object clone() {
-		return new SpanningTree();
+		return new OpenStarsAlone();
 	}
 	
 }
